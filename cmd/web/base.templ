@@ -7,9 +7,11 @@ templ Base() {
 			<meta charset="utf-8"/>
 			<title>Go Blueprint Hello</title>
 			<script src="/js/htmx.min.js"></script>
+			<script src="https://cdn.tailwindcss.com"></script>
 		</head>
 		<body>
-			<main>
+			<h1 class="flex font-semibold mx-auto p-2 mt-2 text-xl">Teleport - A url Shortner written in Go</h1>
+			<main class="font-mono mx-auto p-2">
 				{ children... }
 			</main>
 		</body>
