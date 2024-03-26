@@ -1,49 +1,43 @@
 # Project teleport
 
-A URL shortener written in GoLang, Truso Libsql db and HTMX
+A URL shortener written in Go, [Truso](https://turso.tech/) LibSQL db and [HTMX](https://htmx.org/).
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Install Dependencies
 
-## MakeFile
-
-run all make commands with clean tests
 ```bash
-make all build
+go install github.com/a-h/templ/cmd/templ@latest
+go install github.com/cosmtrek/air@latest
 ```
 
-build the application
+Build Templates
+
 ```bash
-make build
+templ generate
 ```
 
-run the application
+Hot Reload
+
 ```bash
-make run
+air
 ```
 
-Create DB container
+Build Application
+
 ```bash
-make docker-run
+go build -o main cmd/api/main.go
 ```
 
-Shutdown DB container
-```bash
-make docker-down
+.env
+
+```env
+PORT=3032
+APP_ENV=local
+SALT=
+DB_URL=libsql://dbname-username.turso.io?authToken=
 ```
 
-live reload the application
-```bash
-make watch
-```
+---
 
-run the test suite
-```bash
-make test
-```
-
-clean up binary from the last build
-```bash
-make clean
-```
+For Turso auth token and CLI, visit [Turso Docs](https://docs.turso.tech/introduction).
