@@ -1,6 +1,6 @@
 # Project teleport
 
-One Paragraph of project description goes here
+A URL shortener written in GoLang, Truso Libsql db and HTMX
 
 ## Getting Started
 
