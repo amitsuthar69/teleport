@@ -23,7 +23,7 @@ func Base() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><title>Teleport 🔗</title><link rel=\"icon\" type=\"image/x-icon\" href=\"./link.svg\"><script src=\"/js/htmx.min.js\"></script><script src=\"https://cdn.tailwindcss.com\"></script></head><body><h1 class=\"lg:mx-[500px] flex font-semibold p-2 mt-2 text-xl\">Teleport - A url Shortner written in Go</h1><main class=\"font-mono mx-auto p-2\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><title>Teleport 🔗</title><link rel=\"icon\" type=\"image/x-icon\" href=\"./link.svg\"><script src=\"/js/htmx.min.js\"></script><script src=\"https://cdn.tailwindcss.com\"></script></head><body><h1 class=\"lg:mx-[550px] flex font-semibold p-2 mt-2 text-xl\">Teleport - A url Shortner written in Go</h1><main class=\"font-mono mx-auto p-2\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

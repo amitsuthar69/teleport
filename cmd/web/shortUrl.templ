@@ -11,8 +11,8 @@ templ LongUrl() {
 }
 
 templ ShortUrl(url string) {
-	<div class="flex gap-1">
+	<div class="lg:mx-[500px] p-2 text-center items-center justify-center bg-gray-400/30 border border-gray-700/50 rounded mx-44 flex gap-1">
 		<p class="font-semibold">Short Url: </p>
-		<a class="text-blue-700 underline" href={ templ.SafeURL(url) }>{ url }</a>
+		<a class="text-blue-700 underline" target="_blank" href={ templ.SafeURL(url) }>{ url }</a>
 	</div>
 }

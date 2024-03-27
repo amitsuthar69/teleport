@@ -62,7 +62,7 @@ func ShortUrl(url string) templ.Component {
 			templ_7745c5c3_Var3 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"flex gap-1\"><p class=\"font-semibold\">Short Url: </p><a class=\"text-blue-700 underline\" href=\"")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"lg:mx-[500px] p-2 text-center items-center justify-center bg-gray-400/30 border border-gray-700/50 rounded mx-44 flex gap-1\"><p class=\"font-semibold\">Short Url: </p><a class=\"text-blue-700 underline\" target=\"_blank\" href=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -78,7 +78,7 @@ func ShortUrl(url string) templ.Component {
 		var templ_7745c5c3_Var5 string
 		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(url)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `cmd/web/shortUrl.templ`, Line: 16, Col: 70}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `cmd/web/shortUrl.templ`, Line: 16, Col: 86}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 		if templ_7745c5c3_Err != nil {
