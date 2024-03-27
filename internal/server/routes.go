@@ -56,14 +56,3 @@ func (s *Server) getLongUrl(w http.ResponseWriter, r *http.Request) {
 	}
 	http.NotFound(w, r)
 }
-
-/*
-func (s *Server) RegisterRoutes() http.Handler {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/", s.HelloWorldHandler)
-	mux.HandleFunc("GET /health", s.healthHandler)
-	mux.HandleFunc("GET /getLongUrl/{hash}", s.getLongUrl)
-	mux.HandleFunc("POST /insert", s.insertHandler)
-	return mux
-}
-*/

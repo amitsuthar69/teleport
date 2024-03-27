@@ -17,7 +17,7 @@ func Base62(id int64) string {
 	var hash string
 	salt, err := strconv.Atoi(os.Getenv("SALT"))
 	if err != nil {
-		return "what's the salt?"
+		return ""
 	}
 
 	number := id * int64(salt)
