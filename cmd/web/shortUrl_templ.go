@@ -29,7 +29,7 @@ func LongUrl() templ.Component {
 				templ_7745c5c3_Buffer = templ.GetBuffer()
 				defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<form class=\"p-4 flex gap-2\" hx-post=\"/short\" method=\"POST\" hx-target=\"#url-container\"><input class=\"border border-gray-700 rounded p-1\" placeholder=\"enter long url...\" id=\"url\" name=\"url\" type=\"text\"> <button class=\"bg-blue-400 hover:bg-blue-500 rounded p-1\" type=\"submit\">Submit</button></form><div id=\"url-container\"></div>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<form class=\"p-4 flex justify-center items-center gap-2\" hx-post=\"/short\" method=\"POST\" hx-target=\"#url-container\"><input class=\"border border-gray-700 rounded py-1 px-2 w-3/4 \" placeholder=\"enter long url...\" id=\"url\" name=\"url\" type=\"text\"> <button class=\"bg-blue-400 border border-blue-600 hover:bg-blue-500 rounded w-24 p-1\" type=\"submit\">Submit</button></form><div id=\"url-container\"></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
