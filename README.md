@@ -1,6 +1,6 @@
 # Project teleport
 
-A URL shortener written in Go, [Truso](https://turso.tech/) LibSQL db and [HTMX](https://htmx.org/).
+A URL shortener written in Go, [Truso](https://turso.tech/) LibSQL db and [HTMX](https://htmx.org/). As this project is deployed on [Railway](https://railway.app), the initial request can take upto 4-5 seconds, have patience :)
 
 ## Getting Started
 
@@ -17,22 +17,22 @@ Build Templates
 templ generate
 ```
 
-Hot Reload
-
-```bash
-air
-```
-
 Build Application
 
 ```bash
 go build -o main cmd/api/main.go
 ```
 
+Hot Reload
+
+```bash
+air
+```
+
 .env
 
 ```env
-PORT=3032
+PORT=42069
 APP_ENV=local
 SALT=
 DB_URL=libsql://dbname-username.turso.io?authToken=
