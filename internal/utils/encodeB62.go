@@ -20,7 +20,7 @@ func Base62(id int64) string {
 		return ""
 	}
 
-	number := id * int64(salt)
+	number := id % int64(salt)
 	for number > 0 {
 		rem := number % 62
 		hash = string(base62Chars[rem]) + hash

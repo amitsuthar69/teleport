@@ -3,10 +3,8 @@ package database
 import (
 	"context"
 	"database/sql"
-	"fmt"
 	"log"
 	"os"
-	"strconv"
 	encode "teleport/internal/utils"
 	"time"
 
@@ -54,7 +52,6 @@ func (s *service) Health() map[string]string {
 }
 
 func (s *service) SetLongUrl(longUrl string) string {
-
 	var existingHash string
 	checkStmt := `SELECT shortUrl FROM shortUrls WHERE longUrl = ?`
 	err := s.db.QueryRow(checkStmt, longUrl).Scan(&existingHash)
@@ -65,11 +62,7 @@ func (s *service) SetLongUrl(longUrl string) string {
 		return err.Error()
 	}
 
-	time := time.Now().Format("06121545")
-	id, err := strconv.Atoi(time)
-	if err != nil {
-		fmt.Println(err)
-	}
+	id := time.Now().UnixNano()
 	hash := encode.Base62(int64(id))
 	stmt := `INSERT INTO shortUrls (shortUrl, longUrl) VALUES (?, ?)`
 	_, err = s.db.Exec(stmt, hash, longUrl)
