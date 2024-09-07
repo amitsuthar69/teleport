@@ -2,6 +2,8 @@
 
 A URL shortener written in Go, [Truso](https://turso.tech/) LibSQL db and [HTMX](https://htmx.org/). As this project is deployed on [Railway](https://railway.app), the initial request can take upto 4-5 seconds, have patience :)
 
+> The hashed / shortened URLs generated are a product of **Base62_Encoding**(originalURL) and a predefined **SALT** value and are stored in a SQLite Database.
+
 ## Getting Started
 
 Install Dependencies

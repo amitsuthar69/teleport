@@ -43,7 +43,9 @@ func (s *service) Health() map[string]string {
 
 	err := s.db.PingContext(ctx)
 	if err != nil {
-		log.Fatalf(fmt.Sprintf("db down: %v", err))
+		return map[string]string{
+			"error": "DB is Down",
+		}
 	}
 
 	return map[string]string{
@@ -52,6 +54,17 @@ func (s *service) Health() map[string]string {
 }
 
 func (s *service) SetLongUrl(longUrl string) string {
+
+	var existingHash string
+	checkStmt := `SELECT shortUrl FROM shortUrls WHERE longUrl = ?`
+	err := s.db.QueryRow(checkStmt, longUrl).Scan(&existingHash)
+	if err == nil {
+		return existingHash
+	} else if err != sql.ErrNoRows {
+		log.Printf("Error checking existing long URL: %v", err)
+		return err.Error()
+	}
+
 	time := time.Now().Format("06121545")
 	id, err := strconv.Atoi(time)
 	if err != nil {

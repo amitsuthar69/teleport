@@ -3,7 +3,7 @@ module teleport
 go 1.22.1
 
 require (
-	github.com/a-h/templ v0.2.648
+	github.com/a-h/templ v0.2.771
 	github.com/joho/godotenv v1.5.1
 	github.com/tursodatabase/libsql-client-go v0.0.0-20240325124956-38d3fa8b48a2
 )
