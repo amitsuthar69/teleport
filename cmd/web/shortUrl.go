@@ -15,6 +15,6 @@ func ShortUrlHandler(w http.ResponseWriter, r *http.Request) {
 	url := r.FormValue("url")
 	hash := database.New().SetLongUrl(url)
 
-	component := ShortUrl(fmt.Sprintf("https://teleport.up.railway.app/v1/%v", hash))
+	component := ShortUrl(fmt.Sprintf("https://tp.airtxt.me/v1/%v", hash))
 	component.Render(r.Context(), w)
 }

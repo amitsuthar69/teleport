@@ -13,13 +13,10 @@ import (
 func (s *Server) RegisterRoutes() http.Handler {
 
 	mux := http.NewServeMux()
-	mux.HandleFunc("/", s.HelloWorldHandler)
-
+	mux.Handle("/", templ.Handler(web.LongUrl()))
 	mux.HandleFunc("/health", s.healthHandler)
-
 	fileServer := http.FileServer(http.FS(web.Files))
 	mux.Handle("/js/", fileServer)
-	mux.Handle("/web", templ.Handler(web.LongUrl()))
 	mux.HandleFunc("/short", web.ShortUrlHandler)
 	mux.HandleFunc("GET /v1/{hash}", s.getLongUrl)
 	return mux
