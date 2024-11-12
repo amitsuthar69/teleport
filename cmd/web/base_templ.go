@@ -29,7 +29,7 @@ func Base() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><title>Teleport 🔗</title><link rel=\"icon\" type=\"image/x-icon\" href=\"./link.svg\"><script src=\"/js/htmx.min.js\"></script><script src=\"https://cdn.tailwindcss.com\"></script></head><body><h1 class=\"lg:mx-[550px] flex font-semibold p-2 mt-2 text-xl\">Teleport - A url Shortner written in Go</h1><main class=\"font-mono mx-auto p-2\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>Teleport 🔗</title><link rel=\"icon\" href=\"/public/link.svg\" type=\"image/svg+xml\"><script src=\"/js/htmx.min.js\"></script><script src=\"https://cdn.tailwindcss.com\"></script><script>\n      tailwind.config = {\n        theme: {\n          extend: {\n            colors: {\n              primary: \"#8B5CF6\",\n              secondary: \"#4B5563\",\n            },\n          },\n        },\n      };\n    </script></head><body class=\"h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-gray-100 flex flex-col overscroll-none\"><header class=\"py-6\"><div class=\"container mx-auto px-4\"><h1 class=\"text-3xl font-bold text-center\">Tele<span class=\"text-primary\">port</span></h1></div></header><main class=\"flex-grow mx-auto px-4 py-8 flex flex-col items-center mt-10 md:mt-0 md:justify-center\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -37,7 +37,7 @@ func Base() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</main></body></html>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</main><footer class=\"py-4 text-center text-gray-400\"><p>Made with  <a class=\"underline hover:text-gray-200\" href=\"https://github.com/amitsuthar69/GoTTH\" target=\"_blank\">GoTTH Stack</a> by  <a class=\"hover:text-gray-200\" href=\"https://github.com/amitsuthar69\" target=\"_blank\">Amit Suthar</a>.</p></footer></body></html>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

@@ -41,7 +41,7 @@ func LongUrl() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<form class=\"p-4 flex justify-center items-center gap-2\" hx-post=\"/short\" method=\"POST\" hx-target=\"#url-container\"><input class=\"border border-gray-700 rounded py-1 px-2 w-3/4 \" placeholder=\"enter long url...\" id=\"url\" name=\"url\" type=\"text\"> <button class=\"bg-blue-400 border border-blue-600 hover:bg-blue-500 rounded w-24 p-1\" type=\"submit\">Submit</button></form><div id=\"url-container\"></div>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"w-full\"><h2 class=\"text-2xl font-semibold mb-6 text-center\">Shorten Your URL </h2><form class=\"space-y-4\" hx-post=\"/short\" method=\"POST\" hx-target=\"#result\"><div class=\"relative\"><input id=\"url\" name=\"url\" type=\"url\" placeholder=\"Enter your long URL\" required class=\"w-full px-4 py-3 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary pr-12\"> <svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-5 w-5 absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1\"></path></svg></div><div id=\"result\"></div><button type=\"submit\" class=\"w-full bg-primary hover:bg-purple-600 text-white font-semibold py-3 px-4 rounded-lg transition duration-300 ease-in-out flex items-center justify-center\">Shorten <svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-5 w-5 ml-2\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M14 5l7 7m0 0l-7 7m7-7H3\"></path></svg></button></form><div class=\"mt-16 text-center\"><h3 class=\"text-xl font-semibold mb-4\">Why Choose Teleport?</h3><div class=\"flex flex-wrap justify-center gap-6\"><div class=\"flex items-center\"><svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-6 w-6 text-primary mr-2\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M13 10V3L4 14h7v7l9-11h-7z\"></path></svg> <span>Lightning Fast</span></div><div class=\"flex items-center\"><svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-6 w-6 text-primary mr-2\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z\"></path></svg> <span>Secure Links</span></div><div class=\"flex items-center\"><svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-6 w-6 text-primary mr-2\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M13 7l5 5m0 0l-5 5m5-5H6\"></path></svg> <span>Easy to Use</span></div></div></div></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -76,7 +76,7 @@ func ShortUrl(url string) templ.Component {
 			templ_7745c5c3_Var3 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"lg:mx-[500px] p-2 text-center items-center justify-center bg-gray-400/30 border border-gray-700/50 rounded mx-44 flex gap-1\"><p class=\"font-semibold\">Short Url: </p><a class=\"text-blue-700 underline\" target=\"_blank\" href=\"")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"flex items-center justify-center p-2 bg-gray-700 rounded\"><a href=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -85,14 +85,14 @@ func ShortUrl(url string) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" class=\"text-primary hover:text-purple-400 break-all\" target=\"_blank\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var5 string
 		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(url)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `cmd/web/shortUrl.templ`, Line: 16, Col: 86}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `cmd/web/shortUrl.templ`, Line: 112, Col: 8}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 		if templ_7745c5c3_Err != nil {

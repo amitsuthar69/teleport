@@ -5,16 +5,42 @@ templ Base() {
 	<html lang="en">
 		<head>
 			<meta charset="utf-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 			<title>Teleport 🔗</title>
-			<link rel="icon" type="image/x-icon" href="./link.svg"/> // not wokring :(
+			<link rel="icon" href="/public/link.svg" type="image/svg+xml"/>
 			<script src="/js/htmx.min.js"></script>
 			<script src="https://cdn.tailwindcss.com"></script>
+			<script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#8B5CF6",
+              secondary: "#4B5563",
+            },
+          },
+        },
+      };
+    </script>
 		</head>
-		<body>
-			<h1 class="lg:mx-[550px] flex font-semibold p-2 mt-2 text-xl">Teleport - A url Shortner written in Go</h1>
-			<main class="font-mono mx-auto p-2">
+		<body class="h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-gray-100 flex flex-col overscroll-none">
+			<header class="py-6">
+				<div class="container mx-auto px-4">
+					<h1 class="text-3xl font-bold text-center">
+						Tele<span class="text-primary">port</span>
+					</h1>
+				</div>
+			</header>
+			<main class="flex-grow mx-auto px-4 py-8 flex flex-col items-center mt-10 md:mt-0 md:justify-center">
 				{ children... }
 			</main>
+			<footer class="py-4 text-center text-gray-400">
+				<p>
+					Made with 
+					<a class="underline hover:text-gray-200" href="https://github.com/amitsuthar69/GoTTH" target="_blank">GoTTH Stack</a> by 
+					<a class="hover:text-gray-200" href="https://github.com/amitsuthar69" target="_blank">Amit Suthar</a>.
+				</p>
+			</footer>
 		</body>
 	</html>
 }
