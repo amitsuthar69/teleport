@@ -5,6 +5,7 @@ import (
 	"database/sql"
 	"log"
 	"os"
+	"teleport/internal/cache"
 	encode "teleport/internal/utils"
 	"time"
 
@@ -19,7 +20,8 @@ type Service interface {
 }
 
 type service struct {
-	db *sql.DB
+	db    *sql.DB
+	cache *cache.CacheMap
 }
 
 var (
@@ -31,7 +33,7 @@ func New() Service {
 	if err != nil {
 		log.Fatal(err)
 	}
-	s := &service{db: db}
+	s := &service{db: db, cache: cache.NewCacheMap(50)}
 	return s
 }
 
@@ -56,6 +58,7 @@ func (s *service) SetLongUrl(longUrl string) string {
 	checkStmt := `SELECT shortUrl FROM shortUrls WHERE longUrl = ?`
 	err := s.db.QueryRow(checkStmt, longUrl).Scan(&existingHash)
 	if err == nil {
+		s.cache.Set(existingHash, longUrl)
 		return existingHash
 	} else if err != sql.ErrNoRows {
 		log.Printf("Error checking existing long URL: %v", err)
@@ -70,10 +73,18 @@ func (s *service) SetLongUrl(longUrl string) string {
 		log.Printf("Error inserting short URL: %v", err)
 		return err.Error()
 	}
+
+	s.cache.Set(hash, longUrl)
 	return hash
 }
 
 func (s *service) GetLongUrl(hash string) string {
+	if url, exists := s.cache.Get(hash); exists {
+		log.Printf("Cache hit for hash: %s", hash)
+		return url
+	}
+	log.Printf("Cache miss for hash: %s", hash)
+
 	stmt := `SELECT longUrl FROM shortUrls WHERE shortUrl= ? `
 	row := s.db.QueryRow(stmt, hash)
 	var LongUrl string
@@ -85,5 +96,7 @@ func (s *service) GetLongUrl(hash string) string {
 		}
 		log.Fatal(err)
 	}
+
+	s.cache.Set(hash, LongUrl)
 	return LongUrl
 }

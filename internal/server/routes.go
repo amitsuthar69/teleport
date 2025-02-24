@@ -17,7 +17,9 @@ func (s *Server) RegisterRoutes() http.Handler {
 	mux.HandleFunc("/health", s.healthHandler)
 	fileServer := http.FileServer(http.FS(web.Files))
 	mux.Handle("/js/", fileServer)
-	mux.HandleFunc("/short", web.ShortUrlHandler)
+	mux.HandleFunc("/short", func(w http.ResponseWriter, r *http.Request) {
+		web.ShortUrlHandler(s.db, w, r)
+	})
 	mux.HandleFunc("GET /v1/{hash}", s.getLongUrl)
 	return mux
 }
