@@ -1,12 +1,14 @@
 # Project teleport
 
-### A URL shortener written in Go, [Truso](https://turso.tech/) LibSQL db and [HTMX](https://htmx.org/). As this project is deployed on [Railway](https://railway.app), the initial request can take upto 3-4 seconds, have patience :)
+### A URL shortener written in Go, [Truso](https://turso.tech/) LibSQL db and [HTMX](https://htmx.org/).
 
 ---
 
-**The hash value generated for shortened URLs are calculated as:**
+- **The hash value generated for shortened URLs are calculated as:**
+> Base62(number of nanoseconds elapsed since Jan 1, 1970 UTC % a predefined SALT value).
 
-> **Base62_Encoding**(number of nanoseconds elapsed since Jan 1, 1970 UTC % a predefined SALT value)
+- **In-memory cache for faster page loads:**
+> The lastest version of Teleport uses [LRUCache](https://github.com/amitsuthar69/libs/blob/master/lrucache/lrucache.go) to cache most recently used URLs.
 
 ## Getting Started
 
