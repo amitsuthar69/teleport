@@ -5,6 +5,7 @@ import (
 	"database/sql"
 	"log"
 	"os"
+	"strings"
 	"teleport/internal/cache"
 	encode "teleport/internal/utils"
 	"time"
@@ -15,7 +16,7 @@ import (
 
 type Service interface {
 	Health() map[string]string
-	SetLongUrl(string) string
+	SetLongUrl(string, string) string
 	GetLongUrl(string) string
 }
 
@@ -53,7 +54,7 @@ func (s *service) Health() map[string]string {
 	}
 }
 
-func (s *service) SetLongUrl(longUrl string) string {
+func (s *service) SetLongUrl(longUrl string, alias string) string {
 	var existingHash string
 	checkStmt := `SELECT shortUrl FROM shortUrls WHERE longUrl = ?`
 	err := s.db.QueryRow(checkStmt, longUrl).Scan(&existingHash)
@@ -67,11 +68,16 @@ func (s *service) SetLongUrl(longUrl string) string {
 
 	id := time.Now().UnixNano()
 	hash := encode.Base62(int64(id))
+	if len(alias) > 0 {
+		hash = alias
+	}
+
 	stmt := `INSERT INTO shortUrls (shortUrl, longUrl) VALUES (?, ?)`
 	_, err = s.db.Exec(stmt, hash, longUrl)
 	if err != nil {
-		log.Printf("Error inserting short URL: %v", err)
-		return err.Error()
+		if UniqueError(err.Error()) {
+			return ""
+		}
 	}
 
 	s.cache.Set(hash, longUrl)
@@ -99,4 +105,8 @@ func (s *service) GetLongUrl(hash string) string {
 
 	s.cache.Set(hash, LongUrl)
 	return LongUrl
+}
+
+func UniqueError(err string) bool {
+	return strings.Contains(err, "UNIQUE constraint failed")
 }
