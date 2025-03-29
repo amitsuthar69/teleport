@@ -21,7 +21,7 @@ func ShortUrlHandler(db database.Service, w http.ResponseWriter, r *http.Request
 
 	var component templ.Component
 	if len(hash) > 0 {
-		component = ShortUrl(fmt.Sprintf("http://localhost:3033/v1/%v", hash))
+		component = ShortUrl(fmt.Sprintf("https://tp.airtxt.me/v1/%v", hash))
 	} else {
 		component = Error("This alias is already in use!")
 	}
